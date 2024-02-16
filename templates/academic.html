@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alina Glaubitz" />
+	<meta name="keywords" content="alina,glaubitz,math,dartmouth,data,science" />
+	<meta name="author" content="Alina Glaubitz" />
+    <title>Academic Research</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/apple-touch-icon.png') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Project Notebooks</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/boxoffice_notebook">Box Office</a></li>
+                    <li><a href="/dogvcat_notebook">Cats and Dogs</a></li>
+                    <li><a href="/movies_notebook">Movie Recommendation</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Demonstrations and Illustrations</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/boxoffice_dashboard">Box Office Forecast - Demo</a></li>
+                    <li><a href="/movie_recommendation_content">Movie Recommendation - Demo</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Academic</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/academic">Research</a></li>
+                    <li><a href="/teaching">Presentation</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="academic-container">
+        <p> Currently, I am in the process of writing my Ph.D. thesis, my research in <strong>evolutionary game theory</strong> provides insights into ultimate motivations for human behavior. 
+            This journey has equipped me with a robust skill set highly applicable to industry roles. My methodological approach, which combines mathematical rigor with an eye for the big picture, has honed my ability to manage and deliver on multiple projects simultaneously.
+
+            The academic projects I've engaged with demonstrates not just my technical expertise but also my capacity for clear and effective communication of complex results. This experience has been instrumental in developing strong adaptability and time management skills.
+
+                <h2>Publications:</h2>
+                <ul>
+                <li><a href="https://royalsocietypublishing.org/doi/full/10.1098/rspa.2020.0686">Oscillatory Dynamics in the dilemma of social distancing</a> (with <a href="https://faculty-directory.dartmouth.edu/feng-fu">Feng Fu</a>). Published in Proceedings of the Royal Society A (and mentioned in <a href='https://www.nytimes.com/2020/12/20/health/virus-vaccine-game-theory.html'>NYT article</a>).</li>
+                <li><a href="https://www.sciencedirect.com/science/article/pii/S2405844023063028?via%3Dihub">Population heterogeneity in vaccine coverage impacts epidemic thresholds and bifurcation dynamics</a> (with <a href="https://faculty-directory.dartmouth.edu/feng-fu">Feng Fu</a>). Published in Heliyon.</li>
+                </ul>
+                <h2>Preprints:</h2>
+                <ul>
+                <li> <a href="https://arxiv.org/abs/2303.01622">Evolutionary branching and consistency in human cooperation: the interplay of incentives and volunteerism in addressing collective action dilemmas</a> (with <a href="https://faculty-directory.dartmouth.edu/feng-fu">Feng Fu</a>).</li>
+                </ul>
+          <hr class="clear" />
+        
+            <p class="footer">Copyright &copy; 2024 Alina Glaubitz<br />
+          </p>
+    </div>
+</body>
+</html>
+<style>
+    body{
+    background-image: url('static/images/AcademicResearch.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Times New Roman', sans-serif;
+    text-align: left;
+    margin: 50px;
+    padding: 0;
+    height: 100vh;
+    }
+</style>

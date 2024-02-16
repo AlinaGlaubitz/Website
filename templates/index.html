@@ -1,0 +1,91 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alina Glaubitz" />
+	<meta name="keywords" content="alina,glaubitz,math,dartmouth,data,science" />
+	<meta name="author" content="Alina Glaubitz" />
+    <title>About me</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/style/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/apple-touch-icon.png') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Project Notebooks</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/boxoffice_notebook">Box Office</a></li>
+                    <li><a href="/dogvcat_notebook">Cats and Dogs</a></li>
+                    <li><a href="/movies_notebook">Movie Recommendation</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Demonstrations and Illustrations</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/boxoffice_dashboard">Box Office Forecast - Demo</a></li>
+                    <li><a href="/movie_recommendation_content">Movie Recommendation - Demo</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Academic</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/academic">Research</a></li>
+                    <li><a href="/teaching">Presentation</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="about-me-container">
+    <h1>About Me</h1>
+
+    <img class="feature" align="right" src='static/images/Image_Website_AlinaGlaubitz.jpg' style="width:33%;"/>
+
+    <p>I am a Data Scientist and Mathematical Modeler. Currently, I am pursuing my PhD in Mathematics at <A HREF="http://www.math.dartmouth.edu">Dartmouth College</A> under the guidance of <A HREF="https://faculty-directory.dartmouth.edu/feng-fu">Feng Fu</A> with expected graduation in June 2024. Prior to joining Dartmouth, I completed both my Bachelor's and Master's degrees in Mathematics at TU Braunschweig in Germany. 
+        My research interests lie in application of evolutionary game theory to gain insights into human behavior as well as exploring the interplay between human behavior and disease transmission, with a particular focus on the application of mathematical tools to better understand these phenomena.</p> 
+        
+        <p>
+            Beyond academia, my passion for and dedication to Data Science and programming is showcased through a series of projects: 
+        </p>
+		<ul>
+		<li><p class="list"> <b>Image Classification - Dogs and Cats:</b> Harnessing the power of ResNet50, this project achieves > 0.99 accuracy in differentiating between cats and dogs. Complete with an exploratory data analysis and model training <a href="/dogvcat_notebook">Jupyter Notebook</a>.</p></li>
+        <li><p class="list"> <b>Movie Recommendation System:</b> A comparative study of Content-Based and Collaborative Filtering systems, with detailed insights available in a <a href="/movies_notebook">Jupyter Notebook</a> and an <a href="/movies_demo">interactive demo</a>, merging the Flask application with HTML and JavaScript.</p></li>
+        <li><p class="list"> <b>Box Office Forecast:</b> An evolving tool offering weekly box office predictions, fueled by daily data scraping from Box Office Mojo and refined with real-time data integration. Extensive EDA and model building details can be found in a <a href="/boxoffice_notebook">Jupyter Notebook</a> and the results can be explored in a <a href="/boxoffice_dashboard">Dashboard</a>.</li>
+        </ul>
+
+        <p> For a deeper dive into how these projects were brought to life and their integration into this website, you can also explore the technical intricacies and download resources from my <a href="https://github.com/AlinaGlaubitz/Website/tree/main">GitHub</a>.
+            Additionally, you can find more details about me in my <a href="/resume">resume</a> or in this <A HREF="/resume_interactive">interactive Tableau Resume</A>. Finally, <a href="/credit">here </a>is a list of the artists whose picture I have use from <a href="https://unsplash.com">Unsplash</a>.</p>
+
+    <p>Email: Alina.Glaubitz.GR(at)Dartmouth(dot)edu</p>
+
+
+	<hr class="clear" />
+
+	<p class="footer">Copyright &copy; 2024 Alina Glaubitz<br />
+    </p>
+	</div>
+    </div>
+</body>
+</html>
+
+<style>
+    body{
+    background-image: url("static/images/AboutMe_Background2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /*color: #ffcccc; /* Light red text color */
+    font-family: 'Times New Roman', sans-serif;
+    text-align: left;
+    margin: 50px;
+    padding: 0;
+}
+</style>

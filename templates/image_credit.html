@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alina Glaubitz" />
+	<meta name="keywords" content="alina,glaubitz,math,dartmouth,data,science" />
+	<meta name="author" content="Alina Glaubitz" />
+    <title>Image Credit </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/apple-touch-icon.png') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Project Notebooks</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/boxoffice_notebook">Box Office</a></li>
+                    <li><a href="/dogvcat_notebook">Cats and Dogs</a></li>
+                    <li><a href="/movies_notebook">Movie Recommendation</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Demonstrations and Illustrations</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/boxoffice_dashboard">Box Office Forecast - Demo</a></li>
+                    <li><a href="/movie_recommendation_content">Movie Recommendation - Demo</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Academic</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/academic">Research</a></li>
+                    <li><a href="/teaching">Presentation</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class='demo-container'>
+        <h1>Image Credit</h1>
+
+        <p>
+            The purpose of this page is to give credit for all the images used on this website. For (almost) all 
+            background images <a href="https://unsplash.com">Unsplash</a> was used. In particular, here is a list of all images:
+            <ul>
+                <li> Background images:
+            <ul>
+                <li><a href="/boxoffice_notebook">Box Office Notebook</a> (and Dashboard): Selected from Unsplash (<a href='https://unsplash.com/@imnoom'>Noom Peerapong</a>)</li>
+                <li><a href="/dogvcat_notebook">Cats and Dogs Notebook</a>: Selected from Unsplash (<a href='https://unsplash.com/@brianna_santellan'>Brianna Santellan</a>)</li>
+                <li><a href="/movies_notebook">Movies Notebook</a>:  Selected from Unsplash (<a href='https://unsplash.com/@nypl'>The New York Public Library</a>)</li>
+                <li><a href="/movie_recommendation_demo">Movie Recommendation Demo</a>: Selected from Unsplash (<a href='https://unsplash.com/@imrickyturner'>Ricky Turner</a>)</li>
+                <li><a href="/academic">Academic Research</a>: Selected from Unsplash (<a href='https://unsplash.com/@roman_lazygeek'>Roman Mager</a>)</li>
+                <li><a href="/teaching">Presentation</a>: Taken by <a href='https://juanitaduquer.github.io'>Juanita Duque Rosero</a></li>
+                <li><a href='/resume_interactive'>Resume</a>: Selected from Unsplash (<a href='https://unsplash.com/@georgiadelotz'>Georgia De Lotz</a>)</li>
+                <li><a href='/credit'>Image Credit</a>: Selected from Unsplash (<a href='https://unsplash.com/@ethanchoover'>Ethan Hoover</a>)</li>
+                <li><a href='/'>About Me</a>: Selected from Unsplash (<a href='https://unsplash.com/@romanbozhko'>Roman Bozhko</a>)</li>
+                
+            </ul>
+            <li> Profile Pictures: Taken by <a href="https://lightflexstudios.com">Light Flex Studios</a></li>
+            </ul>
+        </p>
+    </div>
+</body>
+</html>
+
+<style>
+    body{
+        background-image: url('static/images/Image_credit.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-family: 'Times New Roman', sans-serif;
+        text-align: left;
+        margin: 50px;
+        padding: 0;
+        height: 100vh;
+    }
+</style>

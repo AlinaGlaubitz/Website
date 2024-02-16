@@ -1,0 +1,299 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alina Glaubitz" />
+	<meta name="keywords" content="alina,glaubitz,math,dartmouth,data,science" />
+	<meta name="author" content="Alina Glaubitz" />
+    <title>Movie Recommendation Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/apple-touch-icon.png') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Project Notebooks</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/boxoffice_notebook">Box Office</a></li>
+                    <li><a href="/dogvcat_notebook">Cats and Dogs</a></li>
+                    <li><a href="/movies_notebook">Movie Recommendation</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Demonstrations and Illustrations</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/boxoffice_dashboard">Box Office Forecast - Demo</a></li>
+                    <li><a href="/movie_recommendation_content">Movie Recommendation - Demo</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Academic</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/academic">Research</a></li>
+                    <li><a href="/teaching">Presentation</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="movie-demo-container">
+        <h1>Welcome to the Movie Recommendation Demonstration!</h1>
+
+        <p>
+            Recommendation systems significantly improve our online experience. Streaming services, social media and online shopping are shaped by the mechanisms of different recommendation systems.
+            By analyzing the content as well as user preferences, behavior and interactions  with content, these systems provide personalized suggestions, helping users discover items, products, or information that aligns with their interests.
+            They can efficiently navigate large amounts of data, ultimately enhancing user engagement and satisfaction as well as increasing sales and user retention.
+            Recommendation Systems can be split into three categories:</p>
+        <ol>
+            <li><strong>Content-Based Filtering System:</strong> Recommendations are made purely on similarity to the prefered content. </li>
+            <li><strong>Collaborative Filtering System:</strong> Recommendations are made based on user-interactions with the content. Other user profiles are used.</li>
+            <li><strong>Hybrid System:</strong> These take into account content as well as user interactions.</li>
+        </ol>
+
+        <p>
+            For this project, we compare different systems. Additional details on these systems can be found in these <a href="/movies_notebook">Jupyter Notebooks</a>.
+        </p>
+
+        <div class="section-titles-container">
+            <h1 id="section1-heading" onclick="toggleSection('section1','content')">Content-Based Filtering</h1>
+            <h1 id="section2-heading" onclick="toggleSection('section2','collaborative')">Collaborative-Filtering</h1>
+        </div>
+
+        <div id="section1-content-content" class="section-content" {% if page == 'content' %}style="display: block;"{% endif %}>    <p>
+                The first system we look at is a Content-Based Filtering System. For this purpose, we use this dataset (include link) that contains data 
+                on the top 1000 movies based on IMDB ratings. We use the description of the movie as well as the name of the director, the genre and the most prominent actors
+                in the movie as a basis for the system. Building the recommendation system relies on a few steps:
+                <ol>
+                    <li><strong>Natural Language Processing:</strong> We combine the text data from the different features (overview, director, etc.) into a text. Note that you 
+                        can apply different weights based  on the importance that the features have for you in the system. The resulting texts undergoes some natural language 
+                        processing (lemmatization and TFIDF-vectorization) as it is translated into numerical features.
+                    </li>
+                    <li><strong>Similarity measures:</strong> The resulting numerical features of the input data is compared to the similarly processed data of the remaining movies.
+                        The comparison can be based on different measures. For this project, we used so called cosine similarity. There is an explanation of this metric below. Other
+                        possible metrics are the Euclidean distance or  the Manhattan distance.
+                    </li>
+                    <li><strong>Selection:</strong> Based on the similarity measure, the five movies that are most closely related to the input movies are selected.</li>
+                </ol> 
+            </p>
+            <p>
+                We note here that this system has a clear weakness: If you like a movie from a franchise, recommendations are very likely to come from the same franchise.
+                Additionally, I want to note here that the dataset is fairly small, but that issue can be easily fixed by using a larger dataset. That is a consideration for future work in this direction.
+            </p>
+                    Here, you can test out the content based recommendation system by yourself. You can plug in three movies you like and the system will recommend five similar movies.
+                </p>
+            <div class='movie-selection'>
+                <h2>Select three movies</h2>
+                <!-- First Suggestion Box -->
+                <input type="text" id="inputText1" oninput="getSuggestions(1,'content')" placeholder="Favorite Film 1">
+                <div class='suggestions-container' id="suggestions1"></div>
+
+                <!-- Second Suggestion Box -->
+                <input type="text" id="inputText2" oninput="getSuggestions(2,'content')" placeholder="Favorite Film 2">
+                <div class='suggestions-container' id="suggestions2"></div>
+    
+                <!-- Third Suggestion Box -->
+                <input type="text" id="inputText3" oninput="getSuggestions(3,'content')" placeholder="Favorite Film 3">
+                <div class='suggestions-container' id="suggestions3"></div>
+
+                <form method="post" action="/movie_recommendation_content">
+                    <input type="hidden" id="selectedMovie1" name="selectedMovie1">
+                    <input type="hidden" id="selectedMovie2" name="selectedMovie2">
+                    <input type="hidden" id="selectedMovie3" name="selectedMovie3">
+
+                    <input type="submit" value="Get Recommendations">
+                </form>
+        
+            </div>
+
+            <!-- Display preferred movies -->
+            <div class="preferred-movies">
+                <h2>Preferred Movies</h2>
+                <ol>
+                    {% for selected_movie in selected_movies_content %}
+                        <li>{{ selected_movie }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+
+            <!-- Display recommendations -->
+            <div class="recommendations">
+                <h2>Recommendations</h2>
+                <ol>
+                    {% for recommendation in recommendations_content %}
+                        <li>{{ recommendation }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+
+        </div>
+
+
+        <div id="section2-content-collaborative" class="section-content" {% if page == 'collaborative' %}style="display: block;"{% endif %}>
+            <!-- Content for Section 2 goes here -->
+            <p>
+                While content-based system relie (as the name suggests) on the content of the movies, collaborative systems relie on
+                human interactions with the movies. Collaborative-filtering systems can use user informations to compare the user to other 
+                users with similarity metrics. Recommendations then are made based on what people who are similar to me like. The system That
+                was developed for this system, however, is item based. Here, items are compared based on user feedback (e.g. reviews) with
+                similarity metrics. Then, the items that are most closely related to the items that I like are recommended.
+            </p>
+            <p>
+                Let's discuss in more detail what such a system entails. To build our system, we used a dataset of critic reviews on Rotten
+                Tomatoes (include link to data set). We proceeded in the following steps:
+                
+                <ol>
+                    <li><strong>Reviewer-Movie-Matrix:</strong> The columns are the reviewers and the rows the movies. Each entry tells us what score the reviewer 
+                        gave the movie (if any). If the reviewer did not write a review of a specific movie, we set the value to 0. (Most entries are zero, we say the 
+                        matrix is sparse.)
+                    </li>
+                    <li><strong>Movie-Similarity-Matrix:</strong> The Reviewer-Movie-Matrix gives us a vector of scores for each movie. We compare these vectors pairwise 
+                        (here we use cosine similarity, but other metrics are possible) and create a new matrix that consists of these pairwise comparisons.
+                        The entries of this matrix tell us how similar each movie is to the other movies.
+                    </li>
+                    <li><strong>Recommendations:</strong> When the user provides their favorite movies, the system checks the Movie-Similarity-Matrix and finds the movies 
+                        that are closest to them by adding the cosine similarity between that movie and each of the favorite movies.   
+                    </li>
+                </ol>
+            </p>
+
+            <p>
+                Here you can try out the recommendation system for yourself. Note that this system works better than the content-based system. Part of the reason might be that 
+                the dataset is significantly larger than the conten-based dataset that was used (1000 movies compared to 10000).
+            </p>
+
+            <div class='movie-selection'>
+                <h2>Select three movies</h2>
+                <!-- First Suggestion Box -->
+                <input type="text" id="inputText4" oninput="getSuggestions(4,'collaborative')" placeholder="Favorite Film 1">
+                <div class='suggestions-container' id="suggestions4"></div>
+
+                <!-- Second Suggestion Box -->
+                <input type="text" id="inputText5" oninput="getSuggestions(5,'collaborative')" placeholder="Favorite Film 2">
+                <div class='suggestions-container' id="suggestions5"></div>
+    
+                <!-- Third Suggestion Box -->
+                <input type="text" id="inputText6" oninput="getSuggestions(6,'collaborative')" placeholder="Favorite Film 3">
+                <div class='suggestions-container' id="suggestions6"></div>
+
+                <form method="post" action="/movie_recommendation_collaborative">
+                    <input type="hidden" id="selectedMovie4" name="selectedMovie4">
+                    <input type="hidden" id="selectedMovie5" name="selectedMovie5">
+                    <input type="hidden" id="selectedMovie6" name="selectedMovie6">
+
+                    <input type="submit" value="Get Recommendations">
+                </form>
+        
+            </div>
+
+            <!-- Display preferred movies -->
+            <div class="preferred-movies">
+                <h2>Preferred Movies</h2>
+                <ol>
+                    {% for selected_movie in selected_movies_collaborative %}
+                        <li>{{ selected_movie }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+
+            <!-- Display recommendations -->
+            <div class="recommendations">
+                <h2>Recommendations</h2>
+                <ol>
+                    {% for recommendation in recommendations_collaborative  %}
+                        <li>{{ recommendation}}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // Function to switch between the sides for different recommendation systems
+        function toggleSection(sectionId, page) {
+            // Hide all sections
+            var sections = document.querySelectorAll('.section-content');
+            sections.forEach(function (section) {
+                section.style.display = 'none';
+            });
+
+            // Show the selected section
+            var selectedSection = document.getElementById(sectionId + '-content-' + page);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+            }
+        }
+
+
+
+        // Get suggestions when typing in the select movies fields
+        function getSuggestions(boxNumber,page) {
+                    var inputText = document.getElementById("inputText" + boxNumber).value.toLowerCase();
+
+                    fetch('/get_suggestions-' + page)
+                        .then(response => response.json())
+                        .then(suggestions => {
+                            var filteredSuggestions = suggestions.filter(function (suggestion) {
+                                return suggestion.toLowerCase().includes(inputText);
+                            });
+
+                            displaySuggestions(filteredSuggestions, boxNumber);
+                        });
+                }
+
+            // Set input variable for the movie suggestion afer selection
+            function setMovie(boxNumber, selectedSuggestion) {
+                // Set the selected suggestion as the input value
+                document.getElementById("inputText" + boxNumber).value = selectedSuggestion;
+
+                // Set the hidden input value
+                document.getElementById("selectedMovie" + boxNumber).value = selectedSuggestion;
+            }
+
+            // Function to display suggestions when typing
+            function displaySuggestions(suggestions, boxNumber) {
+                var suggestionsDiv = document.getElementById("suggestions" + boxNumber);
+
+                suggestionsDiv.innerHTML = "";
+
+                for (var i = 0; i < Math.min(suggestions.length, 5); i++) {
+                    var suggestionDiv = document.createElement("div");
+                    suggestionDiv.className = "suggestion";
+                    suggestionDiv.innerHTML = suggestions[i];
+                    suggestionDiv.onclick = function () {
+                        document.getElementById("inputText" + boxNumber).value = this.innerHTML;
+                        suggestionsDiv.innerHTML = "";
+                        setMovie(boxNumber, this.innerHTML);
+                    };
+                    suggestionsDiv.appendChild(suggestionDiv);
+                }
+
+                suggestionsDiv.style.display = suggestions.length > 0 ? "block" : "none";
+            }
+    </script>
+</body>
+</html>
+
+<style>
+    body {
+    background-image: url('static/images/Movie_Demo3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Times New Roman', sans-serif;
+    text-align: left;
+    margin: 50px;
+    padding: 0;
+    height: 100vh;
+}
+</style>

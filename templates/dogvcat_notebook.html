@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alina Glaubitz" />
+	<meta name="keywords" content="alina,glaubitz,math,dartmouth,data,science" />
+	<meta name="author" content="Alina Glaubitz" />
+    <title>Notebook Dog vs Cat </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Project Notebooks</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/boxoffice_notebook">Box Office</a></li>
+                    <li><a href="/dogvcat_notebook">Cats and Dogs</a></li>
+                    <li><a href="/movies_notebook">Movie Recommendation</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Demonstrations and Illustrations</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/boxoffice_dashboard">Box Office Forecast - Demo</a></li>
+                    <li><a href="/movie_recommendation_content">Movie Recommendation - Demo</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Academic</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/academic">Research</a></li>
+                    <li><a href="/teaching">Presentation</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class='notebook-container'>
+        <iframe src="{{ url_for('static', filename='html/DogVCat.html') }}" width="100%" height="800px"></iframe>
+    </div>
+</body>
+</html>
+
+<style>
+    body{
+    background-image: url('static/images/DogVCat_notebook.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /*color: #ffcccc; /* Light red text color */
+    font-family: 'Times New Roman', sans-serif;
+    text-align: left;
+    margin: 50px;
+    padding: 0;
+}
+</style>

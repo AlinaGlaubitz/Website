@@ -1,0 +1,224 @@
+/* Set the font size and margin for paragraphs and lists*/
+p {margin:0 0 18px 0;}
+ul {margin:0 0 15px 20px; padding:0;}
+li {margin:0; padding:0 0 0 5px}
+
+/* General settings for the background and design for the different pages */
+
+
+
+
+
+body.movie_demo {
+    background-image: url('../images/Movie_Demo3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Times New Roman', sans-serif;
+    text-align: left;
+    margin: 50px;
+    padding: 0;
+    height: 100vh;
+}
+
+body.movie_notebook {
+    background-image: url('../images/Movie_Demo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Times New Roman', sans-serif;
+    text-align: left;
+    margin: 50px;
+    padding: 0;
+    height: 100vh;
+}
+
+
+
+body.boxoffice_dashboard {
+    background-image: url('../images/BoxOffice_Dash.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Times New Roman', sans-serif;
+    text-align: left;
+    margin: 10px;
+    padding: 0;
+    height: 100vh;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Adjust the height to fill the viewport */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background for the left half */
+}
+
+#list {background:#fff; text-align:left; padding:20px 20px 5px; margin:15px 0 15px 0;}
+
+.text-container {
+    max-width: 40%;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.575);
+}
+
+.about-me-container {
+    max-width: 60%;
+    padding: 20px;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.575);
+}
+
+.notebook-container {
+    max-width: 80%;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.575);
+}
+
+.teaching-container {
+    max-width: 80%;
+    padding: 20px;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.academic-container {
+    max-width: 70%;
+    padding: 20px;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.dashboard-container {
+    max-width: 90%;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.575);
+}
+
+.demo-container {
+    max-width: 50%;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.806);
+}
+
+.movie-demo-container{
+    max-width: 90%;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+h1, h2 {
+    color: #e944d6; /* Red heading color */
+}
+
+h3 {
+    color: #e944d6; /* Red heading color */
+    text-align: left;
+}
+
+p {
+    margin: 20px;
+    line-height: 1.6;
+}
+
+navbar {
+    background-color: rgb(255, 255, 255);
+}
+
+.navbar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-item {
+    padding: 15px;
+    font-size: 25px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+a {
+    text-decoration: none;
+    color: #e944d6;;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    content: '\25BC'; /* Down arrow */
+    margin-left: 5px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: rgb(255, 252, 252);
+    box-shadow: 0 8px 16px rgba(175, 30, 186, 0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+}
+
+
+.suggestions-container {
+    width: 80%;
+    background-color: #ddd;
+    top: 100%; 
+}
+
+.suggestion {
+    cursor: pointer;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.movie-selection {
+    display: inline-block;
+    margin-right: 20px;
+    width: 300px;
+}
+
+.preferred-movies,
+.recommendations {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 20px;
+    width: 350px;
+}
+
+h1 {
+    display: inline-block;
+    margin-right: 20px; /* Adjust as needed for spacing between titles */
+    cursor: pointer; /* Add pointer cursor for better user experience */
+}
+
+/* Hide content sections by default */
+.section-content {
+    display: none;
+}
+
+/* Display only the active content section */
+.section-content.active {
+    display: block;
+}
+
+.section-titles-container {
+    height: 50px; /* Adjust the height as needed */
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+

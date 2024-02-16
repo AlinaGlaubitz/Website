@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alina Glaubitz" />
+	<meta name="keywords" content="alina,glaubitz,math,dartmouth,data,science" />
+	<meta name="author" content="Alina Glaubitz" />
+    <title>Notebook Movie Recommendations </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/apple-touch-icon.png') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Project Notebooks</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/boxoffice_notebook">Box Office</a></li>
+                    <li><a href="/dogvcat_notebook">Cats and Dogs</a></li>
+                    <li><a href="/movies_notebook">Movie Recommendation</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Demonstrations and Illustrations</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/boxoffice_dashboard">Box Office Forecast - Demo</a></li>
+                    <li><a href="/movie_recommendation_content">Movie Recommendation - Demo</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Academic</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/academic">Research</a></li>
+                    <li><a href="/teaching">Presentation</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Movie Recommendation System - Notebook</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+        <div class="movie-demo-container">
+
+            <h1>Movie Recommendation Systems</h1>
+            <p>
+                Recommendation systems are ubiquotous in our modern world. Streaming services, social media, e-commerce, search engines, all relie on personalized recommendations for each user. Not only do good recommedations enhance user experience, they generate higher revenue for online providers. For this reason, large companies like Google, Amazon and Netflix treat their search engines as their most important company secrets and constantly work on improving the systems.
+                To gain some basic understanding how these systems work, we use two different data sets to create a few simple recommendation systems. These systems take as input a set of movies and returns similar movies.
+            <ol>
+                <li><strong>Content-Based Filtering system:</strong> We use meta data (like a general description, the director, and the actors) to find similar movies.
+                </li>
+                <li>
+                    <strong>Collaborative Filtering system: </strong>We use the review data, in particular the review scores of different reviewers, to find similar movies. We build two different collaborative-filtering systems.
+                </li>
+            </ol>
+            </p>
+
+            <div class="section-titles-container">
+                <h1 id="section1-heading" onclick="toggleSection('section1-content-content')">Content-Based Filtering</h1>
+                <h1 id="section2-heading" onclick="toggleSection('section2-content-collaborative')">Collaborative Filtering</h1>
+            </div>
+
+            <div id="section1-content-content" class="section-content" style="display: block;">
+                <iframe src="{{ url_for('static', filename='html/movierecommendation-contentbased.html') }}" width="100%" height="800px"></iframe>
+            </div>
+            
+            <div id="section2-content-collaborative" class="section-content" style="display: none;">
+               <iframe src="{{ url_for('static', filename='html/movie-recommendations.html') }}" width="100%" height="800px"></iframe>
+            </div>
+    
+        <script>
+            // Function to switch between the sides for different recommendation systems
+            function toggleSection(sectionId) {
+                // Hide all sections
+                var sections = document.querySelectorAll('.section-content');
+                sections.forEach(function (section) {
+                    section.style.display = 'none';
+                });
+
+                // Show the selected section
+                var selectedSection = document.getElementById(sectionId);
+                if (selectedSection) {
+                    selectedSection.style.display = 'block';
+                }
+            }
+
+        </script>
+            
+            
+    </body>
+</html>
+
+<style>
+    body{
+    background-image: url('static/images/Movie_Demo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Times New Roman', sans-serif;
+    text-align: left;
+    margin: 50px;
+    padding: 0;
+    height: 100vh;
+    }
+</style>
